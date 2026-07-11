@@ -18,14 +18,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    - name: Setup Gradle
+      # 强行锁定使用稳定兼容的 Gradle 8.4 版本
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: '8.4'
+
     - name: Generate Keystore
-      # 在云端临时生成一个数字签名文件
       run: |
         keytool -genkey -v -keystore release.jks -keyalg RSA -keysize 2048 -validity 10000 -alias lighty -dname "CN=Lighty" -storepass 123456 -keypass 123456
         mv release.jks app/
 
     - name: Build with Gradle
-      # 指令改为编译 Release 包
       run: gradle assembleRelease
 
     - name: Upload APK
