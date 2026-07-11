@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.lighty.nobrightness'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.lighty.nobrightness"
+        minSdk 28
+        targetSdk 37
+        versionCode 1
+        versionName "1.0"
+    }
+
+    // 配置云端临时生成的签名
+    signingConfigs {
+        release {
+            storeFile file("release.jks")
+            storePassword "123456"
+            keyAlias "lighty"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    compileOnly 'de.robv.android.xposed:api:82'
+}
