@@ -8,7 +8,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="拦截流氓App强制拉高亮度，保护眼睛。请在LSPosed中勾选需要生效的App。" />
+            android:value="禁止作用域内的 APP 强制拉高亮度。" />
         <meta-data
             android:name="xposedminversion"
             android:value="82" />
